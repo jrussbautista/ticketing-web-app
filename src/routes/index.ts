@@ -1,6 +1,6 @@
 const routes = {
   login: '/login',
-  viewTickets: '/tickets',
+  tickets: '/tickets',
 };
 
 export default routes;

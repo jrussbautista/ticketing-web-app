@@ -18,7 +18,9 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
+    'arrow-body-style': 'off',
     'react/function-component-definition': [
       2,
       {
@@ -30,6 +32,13 @@ module.exports = {
       'error',
       {
         restrictedNamedExports: ['then'],
+      },
+    ],
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state'],
       },
     ],
   },
