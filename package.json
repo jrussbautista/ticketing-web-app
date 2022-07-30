@@ -14,6 +14,7 @@
     "@types/node": "^16.11.45",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
@@ -25,6 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "check-types": "tsc --project tsconfig.json --pretty --noEmit",
+    "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,5 +47,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1"
   }
 }
