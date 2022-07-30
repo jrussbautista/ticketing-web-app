@@ -4,6 +4,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import NotFound from 'components/NotFound';
 import LoginPage from 'features/auth/pages/LoginPage';
 import TicketsPage from 'features/tickets/pages/TicketsPage';
+import PublicLayout from 'layouts/PublicLayout';
+import PrivateLayout from 'layouts/PrivateLayout';
 import routes from 'routes';
 
 const App = () => {
@@ -12,15 +14,15 @@ const App = () => {
   return (
     <Routes>
       {user ? (
-        <>
+        <Route element={<PrivateLayout />}>
           <Route path="/" element={<Navigate to={routes.tickets} />} />
           <Route path={routes.tickets} element={<TicketsPage />} />
-        </>
+        </Route>
       ) : (
-        <>
+        <Route path="/" element={<PublicLayout />}>
           <Route path="/" element={<Navigate to={routes.login} />} />
           <Route path={routes.login} element={<LoginPage />} />
-        </>
+        </Route>
       )}
       <Route path="*" element={<NotFound />} />
     </Routes>

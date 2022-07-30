@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { unwrapResult } from '@reduxjs/toolkit';
+import Avatar from '@mui/material/Avatar';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
@@ -12,7 +15,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from 'app/hooks';
 import routes from 'routes';
 
-import AuthLayout from '../components/AuthLayout';
 import { LoginDTO } from '../types';
 import { login } from '../authSlice';
 
@@ -41,7 +43,22 @@ const LoginPage = () => {
   };
 
   return (
-    <AuthLayout title="Sign in">
+    <Box>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Log In
+        </Typography>
+      </Box>
       {errorMessage && (
         <Alert severity="error" sx={{ mt: 3, width: '100%' }}>
           {errorMessage}
@@ -122,7 +139,7 @@ const LoginPage = () => {
           </Grid>
         </Grid>
       </Box>
-    </AuthLayout>
+    </Box>
   );
 };
 
