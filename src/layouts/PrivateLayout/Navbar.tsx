@@ -1,11 +1,10 @@
-import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-const drawerWidth = 240;
+import { DRAWER_WIDTH, APP_TITLE } from 'app/constants';
 
 type NavbarProps = {
   onToggleDrawer: () => void;
@@ -17,8 +16,8 @@ const Navbar = ({ onToggleDrawer }: NavbarProps) => {
       position="fixed"
       elevation={0}
       sx={{
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
-        ml: { sm: `${drawerWidth}px` },
+        width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
+        ml: { sm: `${DRAWER_WIDTH}px` },
       }}
     >
       <Toolbar>
@@ -32,7 +31,7 @@ const Navbar = ({ onToggleDrawer }: NavbarProps) => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          Ticketting
+          {APP_TITLE}
         </Typography>
       </Toolbar>
     </AppBar>
