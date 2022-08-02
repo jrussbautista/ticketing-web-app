@@ -27,7 +27,7 @@ export const login = createAsyncThunk<
   { rejectValue: ValidationErrors }
 >('auth/login', async (data, { rejectWithValue }) => {
   try {
-    const { user, token } = await api.login(data);
+    const { user, access_token: token } = await api.login(data);
     setAuth(user, token);
     return { user, token };
   } catch (err: any) {
