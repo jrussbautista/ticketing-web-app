@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TablePagination from '@mui/material/TablePagination';
 import TableBody from '@mui/material/TableBody';
@@ -43,11 +44,12 @@ const TicketList = ({
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell align="right">Title</TableCell>
-              <TableCell align="right">Requester</TableCell>
-              <TableCell align="right">Date Created</TableCell>
-              <TableCell align="right">Priority</TableCell>
-              <TableCell align="right">Status</TableCell>
+              <TableCell>Title</TableCell>
+              <TableCell>Requester</TableCell>
+              <TableCell>Date Created</TableCell>
+              <TableCell>Priority</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell align="right">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -56,13 +58,17 @@ const TicketList = ({
                 <TableCell component="th" scope="row">
                   #{ticket.id}
                 </TableCell>
-                <TableCell align="right">{ticket.title}</TableCell>
-                <TableCell align="right">{ticket.owner.name}</TableCell>
-                <TableCell align="right">{formatDate(ticket.created_at)}</TableCell>
-
-                <TableCell align="right">{upperCaseFirstLetter(ticket.priority.name)}</TableCell>
-                <TableCell align="right">
+                <TableCell>{ticket.title}</TableCell>
+                <TableCell>{ticket.owner.name}</TableCell>
+                <TableCell>{formatDate(ticket.created_at)}</TableCell>
+                <TableCell>{upperCaseFirstLetter(ticket.priority.name)}</TableCell>
+                <TableCell>
                   <StatusTag status={ticket.status} />
+                </TableCell>
+                <TableCell align="right">
+                  <Button variant="outlined" disableElevation>
+                    View
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

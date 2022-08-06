@@ -14,7 +14,9 @@ type StatusTagProps = {
 const StatusTag = ({ status }: StatusTagProps) => {
   const color = getStatusColor(status);
   const statusText = upperCaseFirstLetter(status);
-  return <Chip label={statusText} sx={{ backgroundColor: color, color: colors.white }} />;
+  return (
+    <Chip label={statusText} sx={{ backgroundColor: color, color: colors.white, width: 90 }} />
+  );
 };
 
 export default StatusTag;

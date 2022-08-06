@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getTickets } from '../api';
+import { getTickets, Params } from '../api';
 
-export const useTickets = () => {
-  return useQuery(['tickets'], getTickets);
+export const useTickets = (params?: Params) => {
+  return useQuery(['tickets', params?.page, params?.limit], () => getTickets(params));
 };
