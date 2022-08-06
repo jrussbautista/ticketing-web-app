@@ -31,3 +31,11 @@ export type TicketsResponse = {
   data: Ticket[];
   meta: Meta;
 };
+
+export type CreateTicketDTO = {
+  title: string;
+  description: string;
+  priority_id: string;
+  type_id: string;
+  assignee_id: string;
+};
