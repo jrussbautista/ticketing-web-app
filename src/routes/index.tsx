@@ -8,6 +8,7 @@ const routes = {
   dashboard: '/dashboard',
   teams: '/teams',
   tickets: '/tickets',
+  createTicket: '/tickets/create',
   types: '/types',
 };
 

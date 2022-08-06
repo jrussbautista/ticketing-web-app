@@ -1,5 +1,5 @@
 import apiClient from 'lib/apiClient';
-import { Ticket, TicketsResponse } from '../types';
+import { CreateTicketDTO, Ticket, TicketsResponse } from '../types';
 
 export type Params = {
   page: number;
@@ -20,5 +20,11 @@ export const getTickets = async (
 export const getTicket = async (id: number): Promise<Ticket> => {
   const url = `/tickets/${id}`;
   const res = await apiClient.get(url);
+  return res.data.data;
+};
+
+export const createTicket = async (data: CreateTicketDTO): Promise<Ticket> => {
+  const url = '/tickets/';
+  const res = await apiClient.post(url, data);
   return res.data.data;
 };
