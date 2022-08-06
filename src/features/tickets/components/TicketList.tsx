@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TablePagination from '@mui/material/TablePagination';
@@ -11,6 +12,7 @@ import Paper from '@mui/material/Paper';
 
 import { formatDate } from 'utils/date';
 import { upperCaseFirstLetter } from 'utils/text';
+import routes from 'routes';
 
 import { Ticket } from '../types';
 import StatusTag from './StatusTag';
@@ -66,7 +68,12 @@ const TicketList = ({
                   <StatusTag status={ticket.status} />
                 </TableCell>
                 <TableCell align="right">
-                  <Button variant="outlined" disableElevation>
+                  <Button
+                    variant="outlined"
+                    disableElevation
+                    component={RouterLink}
+                    to={`${routes.tickets}/${ticket.id}`}
+                  >
                     View
                   </Button>
                 </TableCell>
