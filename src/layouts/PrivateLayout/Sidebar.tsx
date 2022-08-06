@@ -2,11 +2,11 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
+
 import { privateRoutes } from 'routes';
+
+import SidebarListItem from './SidebarListItem';
 
 type SidebarProps = {
   onClose: () => void;
@@ -23,11 +23,8 @@ const Sidebar = ({ onClose, isOpen }: SidebarProps) => {
       <Toolbar />
       <Divider />
       <List>
-        {privateRoutes.map((routes) => (
-          <ListItem button key={routes.name}>
-            <ListItemIcon>{routes.icon}</ListItemIcon>
-            <ListItemText primary={routes.name} />
-          </ListItem>
+        {privateRoutes.map((route) => (
+          <SidebarListItem route={route} key={route.name} />
         ))}
       </List>
       <Divider />

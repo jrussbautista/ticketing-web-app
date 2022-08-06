@@ -9,16 +9,18 @@ const routes = {
   teams: '/teams',
   tickets: '/tickets',
   createTicket: '/tickets/create',
+  myTickets: '/tickets/mine',
   types: '/types',
 };
 
-type PrivateRoute = {
+export type Route = {
   path: string;
   name: string;
   icon: React.ReactElement;
+  children?: Route[];
 };
 
-export const privateRoutes: PrivateRoute[] = [
+export const privateRoutes: Route[] = [
   {
     path: routes.dashboard,
     name: 'Dashboard',
@@ -30,9 +32,26 @@ export const privateRoutes: PrivateRoute[] = [
     icon: <GroupIcon />,
   },
   {
-    path: routes.tickets,
+    path: '',
     name: 'Tickets',
     icon: <TaskIcon />,
+    children: [
+      {
+        path: routes.tickets,
+        name: 'All Tickets',
+        icon: <TaskIcon />,
+      },
+      {
+        path: routes.myTickets,
+        name: 'My Tickets',
+        icon: <TaskIcon />,
+      },
+      {
+        path: routes.createTicket,
+        name: 'Create Ticket',
+        icon: <TaskIcon />,
+      },
+    ],
   },
   {
     path: routes.types,
