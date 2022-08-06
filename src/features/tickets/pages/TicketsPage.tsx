@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
@@ -5,31 +6,32 @@ import TicketList from '../components/TicketList';
 import { useTickets } from '../hooks';
 
 const PAGE_LIMIT = 25;
+const PAGE = 1;
 
 const TicketsPage = () => {
-  const { data, isLoading, isError } = useTickets();
+  const [page, setPage] = useState(PAGE);
+  const [pageLimit, setPageLimit] = useState(PAGE_LIMIT);
+  const { data, isLoading, isFetching, isError } = useTickets({ page, limit: pageLimit });
 
   const handlePageChange = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
-    page: number
+    selectedPage: number
   ) => {
-    // TODO: handle pagination on page change
-    console.log('event', event);
-    console.log('page', page);
+    setPage(selectedPage + 1);
   };
 
   const handleRowsPerPageChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | undefined
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    // TODO: handle pagination on rows per page change
-    console.log('event', event);
+    const selectedPageLimit = Number(event.target.value);
+    setPageLimit(selectedPageLimit);
   };
 
   if (!data || isError) {
     return null;
   }
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <CircularProgress />
@@ -40,10 +42,10 @@ const TicketsPage = () => {
   return (
     <div>
       <TicketList
-        page={1}
+        page={page}
         tickets={data.data}
         total={data.meta.total}
-        rowsPerPage={PAGE_LIMIT}
+        rowsPerPage={pageLimit}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleRowsPerPageChange}
       />
