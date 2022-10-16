@@ -1,5 +1,5 @@
 import apiClient from 'lib/apiClient';
-import { CreateTicketDTO, Ticket, TicketsResponse } from '../types';
+import { CreateTicketDTO, Ticket, TicketsResponse } from 'types/Ticket';
 
 export type Params = {
   page: number;

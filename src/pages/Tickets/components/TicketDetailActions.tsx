@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
-const TicketActions = () => {
+const TicketDetailActions = () => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
       <Button size="large" variant="contained" disableElevation sx={{ mr: 2 }}>
@@ -18,4 +18,4 @@ const TicketActions = () => {
   );
 };
 
-export default TicketActions;
+export default TicketDetailActions;

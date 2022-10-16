@@ -14,9 +14,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch } from 'app/hooks';
 import routes from 'routes';
-
-import { LoginDTO } from '../types';
-import { login } from '../authSlice';
+import { LoginDTO } from 'types/Auth';
+import { login } from 'slices/auth/authSlice';
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();

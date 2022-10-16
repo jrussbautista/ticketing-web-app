@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 
 import { formatDate } from 'utils/date';
 
-import StatusTag from './StatusTag';
-import { Ticket } from '../types';
+import { Ticket } from 'types/Ticket';
+import TicketStatusTag from './TicketStatusTag';
 
 type TicketDetailProps = {
   ticket: Ticket;
@@ -33,7 +33,7 @@ const TicketDetail = ({ ticket }: TicketDetailProps) => {
         </Box>
         <Box sx={{ width: '25%', textAlign: 'left' }}>
           <Typography variant="h6">Status</Typography>
-          <StatusTag status={ticket.status} />
+          <TicketStatusTag status={ticket.status} />
         </Box>
       </Box>
       <Box sx={{ mb: 2 }}>

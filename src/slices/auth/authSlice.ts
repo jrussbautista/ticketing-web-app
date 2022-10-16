@@ -3,10 +3,9 @@ import { AxiosError } from 'axios';
 
 import { ValidationErrors } from 'types';
 
-import * as api from './api';
-
-import { User, LoginDTO } from './types';
-import { setAuth } from './utils';
+import * as authApi from 'api/authApi';
+import { User, LoginDTO } from 'types/Auth';
+import { setAuth } from 'helpers/authHelpers';
 
 type InitialState = {
   user: User | null;
@@ -27,7 +26,7 @@ export const login = createAsyncThunk<
   { rejectValue: ValidationErrors }
 >('auth/login', async (data, { rejectWithValue }) => {
   try {
-    const { user, access_token: token } = await api.login(data);
+    const { user, access_token: token } = await authApi.login(data);
     setAuth(user, token);
     return { user, token };
   } catch (err: any) {

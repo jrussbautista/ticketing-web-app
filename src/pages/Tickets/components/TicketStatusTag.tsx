@@ -4,14 +4,14 @@ import Chip from '@mui/material/Chip';
 import { upperCaseFirstLetter } from 'utils/text';
 import colors from 'theme/colors';
 
-import { Status } from '../types';
-import { getStatusColor } from '../utils';
+import { Status } from 'types/Ticket';
+import { getStatusColor } from 'helpers/ticketHelpers';
 
-type StatusTagProps = {
+type TicketStatusProps = {
   status: Status;
 };
 
-const StatusTag = ({ status }: StatusTagProps) => {
+const TicketStatus = ({ status }: TicketStatusProps) => {
   const color = getStatusColor(status);
   const statusText = upperCaseFirstLetter(status);
   return (
@@ -19,4 +19,4 @@ const StatusTag = ({ status }: StatusTagProps) => {
   );
 };
 
-export default StatusTag;
+export default TicketStatus;

@@ -1,6 +1,6 @@
 import apiClient from 'lib/apiClient';
 
-import { User } from '../types';
+import { User } from 'types/Auth';
 
 export const setUserLocalStorage = (user: User) => {
   window.localStorage.setItem('currentUser', JSON.stringify(user));

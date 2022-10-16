@@ -4,12 +4,12 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
 import routes from 'routes';
+import { CreateTicketDTO } from 'types/Ticket';
+import { createTicket } from 'api/ticketApi';
 
-import CreateTicketForm from '../components/CreateTicketForm';
-import { CreateTicketDTO } from '../types';
-import { createTicket } from '../api';
+import TicketForm from './components/TicketForm';
 
-const CreateTicketPage = () => {
+const TicketCreatePage = () => {
   const navigate = useNavigate();
 
   const handleCreateTicket = async (values: CreateTicketDTO) => {
@@ -25,9 +25,9 @@ const CreateTicketPage = () => {
   return (
     <Paper sx={{ padding: 2 }}>
       <Typography variant="h5">Create Ticket</Typography>
-      <CreateTicketForm onSubmit={handleCreateTicket} />
+      <TicketForm onSubmit={handleCreateTicket} />
     </Paper>
   );
 };
 
-export default CreateTicketPage;
+export default TicketCreatePage;

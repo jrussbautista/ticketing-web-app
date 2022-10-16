@@ -12,7 +12,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { TYPES, PRIORITIES, ASSIGNEES } from 'app/constants';
 import { upperCaseFirstLetter } from 'utils/text';
 
-import { CreateTicketDTO } from '../types';
+import { CreateTicketDTO } from 'types/Ticket';
 
 type CreateTicketFormProps = {
   onSubmit: (values: CreateTicketDTO) => void;

@@ -14,8 +14,8 @@ import { formatDate } from 'utils/date';
 import { upperCaseFirstLetter } from 'utils/text';
 import routes from 'routes';
 
-import { Ticket } from '../types';
-import StatusTag from './StatusTag';
+import { Ticket } from 'types/Ticket';
+import TicketStatusTag from './TicketStatusTag';
 
 type TicketListProps = {
   tickets: Ticket[];
@@ -65,7 +65,7 @@ const TicketList = ({
                 <TableCell>{formatDate(ticket.created_at)}</TableCell>
                 <TableCell>{upperCaseFirstLetter(ticket.priority.name)}</TableCell>
                 <TableCell>
-                  <StatusTag status={ticket.status} />
+                  <TicketStatusTag status={ticket.status} />
                 </TableCell>
                 <TableCell align="right">
                   <Button

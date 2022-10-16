@@ -5,15 +5,15 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 
-import { useTicket } from '../hooks';
-import TicketDetail from '../components/TicketDetail';
-import TicketActions from '../components/TicketActions';
+import { useTicket } from 'hooks/tickets';
+import TicketDetail from './components/TicketDetail';
+import TicketActions from './components/TicketDetailActions';
 
 type Param = {
   id: string;
 };
 
-const TicketPage = () => {
+const TicketDetailPage = () => {
   const { id } = useParams<Param>();
   const { data, isLoading, isFetching, isError } = useTicket(Number(id));
 
@@ -38,4 +38,4 @@ const TicketPage = () => {
   );
 };
 
-export default TicketPage;
+export default TicketDetailPage;

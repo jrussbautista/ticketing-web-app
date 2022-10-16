@@ -2,8 +2,9 @@ import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
-import TicketList from '../components/TicketList';
-import { useTickets } from '../hooks';
+import { useTickets } from 'hooks/tickets';
+
+import TicketList from './components/TicketList';
 
 const PAGE_LIMIT = 25;
 const PAGE = 1;

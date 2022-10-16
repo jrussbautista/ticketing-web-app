@@ -1,6 +1,6 @@
 import colors from 'theme/colors';
 
-import { Status } from '../types';
+import { Status } from 'types/Ticket';
 
 export const getStatusColor = (status: Status) => {
   switch (status) {

@@ -2,10 +2,11 @@ import { useAppSelector } from 'app/hooks';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import NotFound from 'components/NotFound';
-import LoginPage from 'features/auth/pages/LoginPage';
-import TicketPage from 'features/tickets/pages/TicketPage';
-import CreateTicketPage from 'features/tickets/pages/CreateTicketPage';
-import TicketsPage from 'features/tickets/pages/TicketsPage';
+import LoginPage from 'pages/Login/LoginPage';
+
+import TicketsPage from 'pages/Tickets/TicketsPage';
+import TicketDetailPage from 'pages/Tickets/TicketDetailPage';
+import TicketCreatePage from 'pages/Tickets/TicketCreatePage';
 import PublicLayout from 'layouts/PublicLayout';
 import PrivateLayout from 'layouts/PrivateLayout';
 import routes from 'routes';
@@ -19,8 +20,8 @@ const App = () => {
         <Route element={<PrivateLayout />}>
           <Route path="/" element={<Navigate to={routes.tickets} />} />
           <Route path={routes.tickets} element={<TicketsPage />} />
-          <Route path={`${routes.tickets}/:id`} element={<TicketPage />} />
-          <Route path={routes.createTicket} element={<CreateTicketPage />} />
+          <Route path={`${routes.tickets}/:id`} element={<TicketDetailPage />} />
+          <Route path={routes.createTicket} element={<TicketCreatePage />} />
         </Route>
       ) : (
         <Route path="/" element={<PublicLayout />}>

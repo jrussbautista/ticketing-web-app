@@ -1,4 +1,4 @@
-import { User } from 'features/auth/types';
+import { User } from 'types/Auth';
 import { Meta } from 'types';
 
 export type Status = 'pending' | 'cancelled' | 'closed' | 'solved';
