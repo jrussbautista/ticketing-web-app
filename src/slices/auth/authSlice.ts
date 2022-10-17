@@ -5,7 +5,7 @@ import { ValidationErrors } from 'types';
 
 import * as authApi from 'api/authApi';
 import { User, LoginDTO } from 'types/Auth';
-import { setAuth, removeAuth } from 'helpers/authHelpers';
+import { setAuth, removeAuth, setUserLocalStorage } from 'helpers/authHelpers';
 
 type InitialState = {
   user: User | null;
@@ -56,11 +56,27 @@ export const logout = createAsyncThunk(
   }
 );
 
+export const getMe = createAsyncThunk('auth/me', async (_, { rejectWithValue }) => {
+  try {
+    const user = await authApi.me();
+    setUserLocalStorage(user);
+    return { user };
+  } catch (err: any) {
+    removeAuth();
+    const error: AxiosError<ValidationErrors> = err;
+    if (!error.response) {
+      throw error;
+    }
+    return rejectWithValue(error.response.data);
+  }
+});
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // Login Case
     builder.addCase(login.fulfilled, (state, action) => {
       const { user, token } = action.payload;
       state.user = user;
@@ -70,11 +86,21 @@ export const authSlice = createSlice({
       state.user = null;
       state.token = null;
     });
+    // Logout Case
     builder.addCase(logout.fulfilled, (state) => {
       state.user = initialState.user;
       state.token = initialState.token;
     });
     builder.addCase(logout.rejected, (state) => {
+      state.user = null;
+      state.token = null;
+    });
+    // Me Case
+    builder.addCase(getMe.fulfilled, (state, action) => {
+      const { user } = action.payload;
+      state.user = user;
+    });
+    builder.addCase(getMe.rejected, (state) => {
       state.user = null;
       state.token = null;
     });
