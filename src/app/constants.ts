@@ -44,3 +44,8 @@ export const ASSIGNEES = [
     name: 'Jane Done',
   },
 ];
+
+export const localStorageKeys = {
+  CURRENT_USER: 'currentUser',
+  ACCESS_TOKEN: 'accessToken',
+};
