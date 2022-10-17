@@ -5,7 +5,7 @@ import { ValidationErrors } from 'types';
 
 import * as authApi from 'api/authApi';
 import { User, LoginDTO } from 'types/Auth';
-import { setAuth } from 'helpers/authHelpers';
+import { setAuth, removeAuth } from 'helpers/authHelpers';
 
 type InitialState = {
   user: User | null;
@@ -39,6 +39,23 @@ export const login = createAsyncThunk<
   }
 });
 
+export const logout = createAsyncThunk(
+  'auth/logout',
+  // eslint-disable-next-line consistent-return
+  async (_, { rejectWithValue }) => {
+    try {
+      await authApi.logout();
+      removeAuth();
+    } catch (err: any) {
+      const error: AxiosError<ValidationErrors> = err;
+      if (!error.response) {
+        throw error;
+      }
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -50,6 +67,14 @@ export const authSlice = createSlice({
       state.token = token;
     });
     builder.addCase(login.rejected, (state) => {
+      state.user = null;
+      state.token = null;
+    });
+    builder.addCase(logout.fulfilled, (state) => {
+      state.user = initialState.user;
+      state.token = initialState.token;
+    });
+    builder.addCase(logout.rejected, (state) => {
       state.user = null;
       state.token = null;
     });

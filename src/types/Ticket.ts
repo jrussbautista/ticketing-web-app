@@ -1,7 +1,7 @@
 import { User } from 'types/Auth';
 import { Meta } from 'types';
 
-export type Status = 'pending' | 'cancelled' | 'closed' | 'solved';
+export type Status = 'pending' | 'rejected' | 'closed' | 'resolved';
 
 export type Type = {
   id: string;

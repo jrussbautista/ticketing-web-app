@@ -1,10 +1,13 @@
 import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import { DRAWER_WIDTH, APP_TITLE } from 'app/constants';
+
+import UserMenu from './UserMenu';
 
 type NavbarProps = {
   onToggleDrawer: () => void;
@@ -33,6 +36,9 @@ const Navbar = ({ onToggleDrawer }: NavbarProps) => {
         <Typography variant="h6" noWrap component="div">
           {APP_TITLE}
         </Typography>
+        <Box sx={{ flex: 1, justifyContent: 'flex-end', display: 'flex' }}>
+          <UserMenu />
+        </Box>
       </Toolbar>
     </AppBar>
   );
