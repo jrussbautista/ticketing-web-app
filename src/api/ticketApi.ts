@@ -1,4 +1,4 @@
-import apiClient from 'lib/apiClient';
+import { apiClient } from 'lib/axios';
 import { CreateTicketDTO, Ticket, TicketsResponse } from 'types/Ticket';
 
 export type Params = {

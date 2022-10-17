@@ -1,14 +1,23 @@
 import axios from 'axios';
 
-import { API_URL } from 'app/config';
+import { API_URL, BASE_URL } from 'app/config';
 
-const apiClient = axios.create({
-  baseURL: API_URL,
+const options = {
   withCredentials: true,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
+};
+
+export const baseClient = axios.create({
+  baseURL: BASE_URL,
+  ...options,
+});
+
+export const apiClient = axios.create({
+  baseURL: API_URL,
+  ...options,
 });
 
 apiClient.interceptors.request.use((config) => {
@@ -19,5 +28,3 @@ apiClient.interceptors.request.use((config) => {
   }
   return config;
 });
-
-export default apiClient;

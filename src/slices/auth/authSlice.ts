@@ -26,6 +26,7 @@ export const login = createAsyncThunk<
   { rejectValue: ValidationErrors }
 >('auth/login', async (data, { rejectWithValue }) => {
   try {
+    await authApi.getCSRFCookie();
     const { user, access_token: token } = await authApi.login(data);
     setAuth(user, token);
     return { user, token };
