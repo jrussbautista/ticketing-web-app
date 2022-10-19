@@ -23,7 +23,7 @@ const CreateTicketForm = ({ onSubmit }: CreateTicketFormProps) => {
     title: '',
     description: '',
     type_id: '',
-    priority_id: '',
+    priority: '',
     assignee_id: '',
   };
   const { handleSubmit, control } = useForm<CreateTicketDTO>({
@@ -33,6 +33,8 @@ const CreateTicketForm = ({ onSubmit }: CreateTicketFormProps) => {
   const onCreate = (values: CreateTicketDTO) => {
     onSubmit(values);
   };
+
+  const priorities = Object.values(PRIORITIES).map((priority) => priority);
 
   return (
     <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={handleSubmit(onCreate)}>
@@ -108,7 +110,7 @@ const CreateTicketForm = ({ onSubmit }: CreateTicketFormProps) => {
         )}
       />
       <Controller
-        name="priority_id"
+        name="priority"
         control={control}
         rules={{
           required: 'Priority is required field',
@@ -123,9 +125,9 @@ const CreateTicketForm = ({ onSubmit }: CreateTicketFormProps) => {
               value={value}
               onChange={onChange}
             >
-              {PRIORITIES.map((priority) => (
-                <MenuItem value={priority.id} key={priority.id}>
-                  {upperCaseFirstLetter(priority.name)}
+              {priorities.map((priority) => (
+                <MenuItem value={priority} key={priority}>
+                  {upperCaseFirstLetter(priority)}
                 </MenuItem>
               ))}
             </Select>

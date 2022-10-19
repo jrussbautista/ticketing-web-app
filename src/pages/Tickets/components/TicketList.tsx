@@ -63,7 +63,7 @@ const TicketList = ({
                 <TableCell>{ticket.title}</TableCell>
                 <TableCell>{ticket.owner.name}</TableCell>
                 <TableCell>{formatDate(ticket.created_at)}</TableCell>
-                <TableCell>{upperCaseFirstLetter(ticket.priority.name)}</TableCell>
+                <TableCell>{upperCaseFirstLetter(ticket.priority)}</TableCell>
                 <TableCell>
                   <TicketStatusTag status={ticket.status} />
                 </TableCell>

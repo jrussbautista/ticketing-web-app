@@ -29,7 +29,7 @@ const TicketDetail = ({ ticket }: TicketDetailProps) => {
         </Box>
         <Box sx={{ width: '25%', textAlign: 'left' }}>
           <Typography variant="h6">Priority</Typography>
-          <Typography>{ticket.priority.name}</Typography>
+          <Typography>{ticket.priority}</Typography>
         </Box>
         <Box sx={{ width: '25%', textAlign: 'left' }}>
           <Typography variant="h6">Status</Typography>
