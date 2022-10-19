@@ -49,3 +49,8 @@ export const localStorageKeys = {
   CURRENT_USER: 'currentUser',
   ACCESS_TOKEN: 'accessToken',
 };
+
+export const queryKeys = {
+  TICKETS: 'tickets',
+  TICKET: 'ticket',
+};

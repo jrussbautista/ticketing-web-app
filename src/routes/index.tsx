@@ -9,7 +9,6 @@ const routes = {
   teams: '/teams',
   tickets: '/tickets',
   createTicket: '/tickets/create',
-  myTickets: '/tickets/mine',
   types: '/types',
 };
 
@@ -39,11 +38,6 @@ export const privateRoutes: Route[] = [
       {
         path: routes.tickets,
         name: 'All Tickets',
-        icon: <TaskIcon />,
-      },
-      {
-        path: routes.myTickets,
-        name: 'My Tickets',
         icon: <TaskIcon />,
       },
       {
