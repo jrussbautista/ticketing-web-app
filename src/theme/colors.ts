@@ -4,7 +4,8 @@ const colors = {
   secondary: '#19857b',
   // functional
   success: '#618833',
-  warning: '#b2102f',
+  danger: '#b2102f',
+  warning: '#F79F1F',
   info: '#2196f3',
   normal: '#eeeeee',
   // common
