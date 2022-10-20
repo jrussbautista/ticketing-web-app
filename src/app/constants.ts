@@ -1,22 +1,6 @@
 export const APP_TITLE = 'Ticketting';
 export const DRAWER_WIDTH = 240;
 
-// TODO: move this constants to priorities api
-export const PRIORITIES = [
-  {
-    id: 1,
-    name: 'normal',
-  },
-  {
-    id: 2,
-    name: 'medium',
-  },
-  {
-    id: 3,
-    name: 'high',
-  },
-];
-
 // TODO: move this constants to types api
 export const TYPES = [
   {
@@ -33,7 +17,7 @@ export const TYPES = [
   },
 ];
 
-// TODO: move this constants to assignees api
+// TODO: remove this constants once implement the assignees api
 export const ASSIGNEES = [
   {
     id: 1,
@@ -45,7 +29,19 @@ export const ASSIGNEES = [
   },
 ];
 
+export const PRIORITIES = {
+  NORMAL: 'normal',
+  MEDIUM: 'medium',
+  HIGH: 'high',
+  URGENT: 'urgent',
+};
+
 export const localStorageKeys = {
   CURRENT_USER: 'currentUser',
   ACCESS_TOKEN: 'accessToken',
+};
+
+export const queryKeys = {
+  TICKETS: 'tickets',
+  TICKET: 'ticket',
 };

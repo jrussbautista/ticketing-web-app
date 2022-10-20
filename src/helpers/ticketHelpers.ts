@@ -4,12 +4,13 @@ import { Status } from 'types/Ticket';
 
 export const getStatusColor = (status: Status) => {
   switch (status) {
-    case 'resolved':
+    case 'solved':
       return colors.success;
-    case 'rejected':
-    case 'closed':
+    case 'cancelled':
       return colors.warning;
-    case 'pending':
+    case 'closed':
+      return colors.danger;
+    case 'open':
       return colors.info;
     default:
       return colors.normal;

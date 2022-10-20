@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 
-import { useTicket } from 'hooks/tickets';
+import { useTicket } from 'services/ticketsService';
 import TicketDetail from './components/TicketDetail';
 import TicketActions from './components/TicketDetailActions';
 

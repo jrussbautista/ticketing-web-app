@@ -1,17 +1,14 @@
 import { User } from 'types/Auth';
 import { Meta } from 'types';
 
-export type Status = 'pending' | 'rejected' | 'closed' | 'resolved';
+export type Status = 'open' | 'closed' | 'cancelled' | 'solved';
 
 export type Type = {
   id: string;
   name: string;
 };
 
-export type Priority = {
-  id: string;
-  name: string;
-};
+export type Priority = 'normal' | 'medium' | 'high' | 'urgent';
 
 export type Ticket = {
   id: number;
@@ -35,7 +32,7 @@ export type TicketsResponse = {
 export type CreateTicketDTO = {
   title: string;
   description: string;
-  priority_id: string;
+  priority: string;
   type_id: string;
   assignee_id: string;
 };
