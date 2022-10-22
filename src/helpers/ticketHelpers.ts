@@ -1,8 +1,8 @@
 import colors from 'theme/colors';
 
-import { Status } from 'types/Ticket';
+import { TicketStatus, TypeStatus } from 'types/Ticket';
 
-export const getStatusColor = (status: Status) => {
+export const getTicketStatusColor = (status: TicketStatus) => {
   switch (status) {
     case 'solved':
       return colors.success;
@@ -15,4 +15,11 @@ export const getStatusColor = (status: Status) => {
     default:
       return colors.normal;
   }
+};
+
+export const getTypeStatusColor = (status: TypeStatus) => {
+  if (status === 'active') {
+    return colors.success;
+  }
+  return colors.danger;
 };
