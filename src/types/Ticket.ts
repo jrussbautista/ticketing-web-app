@@ -29,6 +29,11 @@ export type TicketsResponse = {
   meta: Meta;
 };
 
+export type TypesResponse = {
+  data: Type[];
+  meta: Meta;
+};
+
 export type CreateTicketDTO = {
   title: string;
   description: string;
