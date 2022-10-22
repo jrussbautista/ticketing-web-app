@@ -10,6 +10,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import { Type } from 'types/Ticket';
+import { upperCaseFirstLetter } from 'utils/text';
+import { getTypeStatusColor } from 'helpers/ticketHelpers';
 
 type TypeListProps = {
   types: Type[];
@@ -41,6 +43,7 @@ const TypeList = ({
             <TableRow>
               <TableCell>ID</TableCell>
               <TableCell>Name</TableCell>
+              <TableCell>Status</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
@@ -51,6 +54,9 @@ const TypeList = ({
                   {type.id}
                 </TableCell>
                 <TableCell>{type.name}</TableCell>
+                <TableCell style={{ color: getTypeStatusColor(type.status) }}>
+                  {upperCaseFirstLetter(type.status)}
+                </TableCell>
                 <TableCell align="center">
                   <Button variant="outlined" disableElevation>
                     View

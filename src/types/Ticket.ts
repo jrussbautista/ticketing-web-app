@@ -1,11 +1,13 @@
 import { User } from 'types/Auth';
 import { Meta } from 'types';
 
-export type Status = 'open' | 'closed' | 'cancelled' | 'solved';
+export type TicketStatus = 'open' | 'closed' | 'cancelled' | 'solved';
+export type TypeStatus = 'active' | 'inactive';
 
 export type Type = {
   id: string;
   name: string;
+  status: TypeStatus;
 };
 
 export type Priority = 'normal' | 'medium' | 'high' | 'urgent';
@@ -14,7 +16,7 @@ export type Ticket = {
   id: number;
   title: string;
   description: string;
-  status: Status;
+  status: TicketStatus;
   type: Type;
   priority: Priority;
   owner: User;
