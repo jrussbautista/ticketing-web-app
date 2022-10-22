@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getTickets, getTicket } from 'api/ticketApi';
+import { getTickets, getTicket } from 'api/ticketsApi';
 import { queryKeys } from 'app/constants';
 
 export const useTickets = (params: Record<string, any>) => {

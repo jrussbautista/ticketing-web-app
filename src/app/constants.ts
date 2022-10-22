@@ -44,4 +44,5 @@ export const localStorageKeys = {
 export const queryKeys = {
   TICKETS: 'tickets',
   TICKET: 'ticket',
+  TYPES: 'types',
 };

@@ -10,6 +10,7 @@ const routes = {
   tickets: '/tickets',
   createTicket: '/tickets/create',
   types: '/types',
+  createTypes: '/types/create',
 };
 
 export type Route = {
@@ -51,6 +52,18 @@ export const privateRoutes: Route[] = [
     path: routes.types,
     name: 'Types',
     icon: <DescriptionIcon />,
+    children: [
+      {
+        path: routes.types,
+        name: 'All Types',
+        icon: <DescriptionIcon />,
+      },
+      {
+        path: routes.createTypes,
+        name: 'Create Types',
+        icon: <DescriptionIcon />,
+      },
+    ],
   },
 ];
 

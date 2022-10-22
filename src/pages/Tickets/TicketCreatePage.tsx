@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import routes from 'routes';
 import { CreateTicketDTO } from 'types/Ticket';
-import { createTicket } from 'api/ticketApi';
+import { createTicket } from 'api/ticketsApi';
 
 import TicketForm from './components/TicketForm';
 

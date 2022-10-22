@@ -8,6 +8,8 @@ import LoginPage from 'pages/Login/LoginPage';
 import TicketsPage from 'pages/Tickets/TicketsPage';
 import TicketDetailPage from 'pages/Tickets/TicketDetailPage';
 import TicketCreatePage from 'pages/Tickets/TicketCreatePage';
+import TypesPage from 'pages/Types/TypesPage';
+import TypesCreatePage from 'pages/Types/TypesCreatePage';
 import PublicLayout from 'layouts/PublicLayout';
 import PrivateLayout from 'layouts/PrivateLayout';
 import routes from 'routes';
@@ -34,6 +36,8 @@ const App = () => {
           <Route path={routes.tickets} element={<TicketsPage />} />
           <Route path={`${routes.tickets}/:id`} element={<TicketDetailPage />} />
           <Route path={routes.createTicket} element={<TicketCreatePage />} />
+          <Route path={routes.types} element={<TypesPage />} />
+          <Route path={routes.createTypes} element={<TypesCreatePage />} />
         </Route>
       ) : (
         <Route path="/" element={<PublicLayout />}>
