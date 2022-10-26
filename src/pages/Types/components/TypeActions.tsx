@@ -4,9 +4,10 @@ import Button from '@mui/material/Button';
 import { SxProps } from '@mui/material';
 import { useSnackbar } from 'notistack';
 
-import { TypeStatus } from 'app/constants';
+import { TypeStatus, roles } from 'app/constants';
 import { useDeactivateType, useActivateType } from 'services/typesService';
 import { Type } from 'types/Ticket';
+import CheckAccess from 'components/CheckAccess';
 
 type TypeActionsProps = {
   type: Type;
@@ -39,29 +40,31 @@ const TypeActions = ({ type }: TypeActionsProps) => {
 
   return (
     <Box>
-      {type.status === TypeStatus.ACTIVE ? (
-        <Button
-          sx={btnStyle}
-          color="error"
-          variant="contained"
-          disableElevation
-          onClick={handleDeactivate}
-          disabled={deactivateType.isLoading}
-        >
-          Deactivate
-        </Button>
-      ) : (
-        <Button
-          sx={btnStyle}
-          variant="contained"
-          color="success"
-          disableElevation
-          onClick={handleActivate}
-          disabled={activateType.isLoading}
-        >
-          Activate
-        </Button>
-      )}
+      <CheckAccess allowedRoles={[roles.ADMIN]}>
+        {type.status === TypeStatus.ACTIVE ? (
+          <Button
+            sx={btnStyle}
+            color="error"
+            variant="contained"
+            disableElevation
+            onClick={handleDeactivate}
+            disabled={deactivateType.isLoading}
+          >
+            Deactivate
+          </Button>
+        ) : (
+          <Button
+            sx={btnStyle}
+            variant="contained"
+            color="success"
+            disableElevation
+            onClick={handleActivate}
+            disabled={activateType.isLoading}
+          >
+            Activate
+          </Button>
+        )}
+      </CheckAccess>
     </Box>
   );
 };
