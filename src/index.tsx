@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { SnackbarProvider } from 'notistack';
 
 import { store } from 'app/store';
 import queryClient from 'lib/queryClient';
@@ -19,11 +20,18 @@ root.render(
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <App />
-          </QueryClientProvider>
-        </Provider>
+        <SnackbarProvider
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <Provider store={store}>
+            <QueryClientProvider client={queryClient}>
+              <App />
+            </QueryClientProvider>
+          </Provider>
+        </SnackbarProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

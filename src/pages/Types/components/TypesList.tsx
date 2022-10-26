@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TablePagination from '@mui/material/TablePagination';
 import TableBody from '@mui/material/TableBody';
@@ -12,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import { Type } from 'types/Ticket';
 import { upperCaseFirstLetter } from 'utils/text';
 import { getTypeStatusColor } from 'helpers/ticketHelpers';
+import TypeActions from './TypeActions';
 
 type TypeListProps = {
   types: Type[];
@@ -44,7 +44,7 @@ const TypeList = ({
               <TableCell>ID</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Status</TableCell>
-              <TableCell align="center">Action</TableCell>
+              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -58,9 +58,7 @@ const TypeList = ({
                   {upperCaseFirstLetter(type.status)}
                 </TableCell>
                 <TableCell align="center">
-                  <Button variant="outlined" disableElevation>
-                    View
-                  </Button>
+                  <TypeActions type={type} />
                 </TableCell>
               </TableRow>
             ))}

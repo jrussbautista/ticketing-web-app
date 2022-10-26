@@ -46,3 +46,8 @@ export const queryKeys = {
   TICKET: 'ticket',
   TYPES: 'types',
 };
+
+export const TypeStatus = {
+  ACTIVE: 'active',
+  INACTIVE: 'inactive',
+};

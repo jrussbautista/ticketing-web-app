@@ -5,7 +5,7 @@ export type TicketStatus = 'open' | 'closed' | 'cancelled' | 'solved';
 export type TypeStatus = 'active' | 'inactive';
 
 export type Type = {
-  id: string;
+  id: number;
   name: string;
   status: TypeStatus;
 };
