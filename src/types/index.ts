@@ -8,3 +8,10 @@ export type Meta = {
   per_page: number;
   total: number;
 };
+
+export type Menu = {
+  path: string;
+  name: string;
+  icon: React.ReactElement;
+  children?: Menu[];
+};
