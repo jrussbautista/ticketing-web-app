@@ -1,3 +1,5 @@
+import { Role } from 'types/Auth';
+
 export const APP_TITLE = 'Ticketting';
 export const DRAWER_WIDTH = 240;
 
@@ -50,4 +52,9 @@ export const queryKeys = {
 export const TypeStatus = {
   ACTIVE: 'active',
   INACTIVE: 'inactive',
+};
+
+export const roles = {
+  USER: Role.USER,
+  ADMIN: Role.ADMIN,
 };
