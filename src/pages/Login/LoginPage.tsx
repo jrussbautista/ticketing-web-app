@@ -10,16 +10,23 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import { useForm, Controller } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Location, useLocation, useNavigate } from 'react-router-dom';
 
 import { useAppDispatch } from 'app/hooks';
 import routes from 'routes';
 import { LoginDTO } from 'types/Auth';
 import { login } from 'slices/auth/authSlice';
 
+type LocationState = {
+  from: Location;
+};
+
 const LoginPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const locationState = location.state as LocationState;
+  const from = locationState?.from?.pathname;
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -34,7 +41,8 @@ const LoginPage = () => {
       setErrorMessage('');
       const res = await dispatch(login(values));
       unwrapResult(res);
-      navigate(routes.tickets);
+      const navigateTo = from || routes.tickets;
+      navigate(navigateTo, { replace: true });
     } catch (error: any) {
       setErrorMessage(error.message);
       setLoading(false);

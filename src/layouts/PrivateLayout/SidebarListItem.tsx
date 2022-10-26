@@ -9,19 +9,19 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
-import { Route } from 'routes';
+import { Menu } from 'types';
 import colors from 'theme/colors';
 
 type SidebarListItemProps = {
-  route: Route;
+  menu: Menu;
 };
 
-const SidebarListItem = ({ route }: SidebarListItemProps) => {
+const SidebarListItem = ({ menu }: SidebarListItemProps) => {
   const { pathname } = useLocation();
-  const isParentPathOpen = pathname.startsWith(route.path);
+  const isParentPathOpen = pathname.startsWith(menu.path);
   const [open, setOpen] = useState(isParentPathOpen);
 
-  const hasChildren = Boolean(route.children?.length);
+  const hasChildren = Boolean(menu.children?.length);
 
   const handleListItemClick = () => {
     if (hasChildren) {
@@ -32,7 +32,7 @@ const SidebarListItem = ({ route }: SidebarListItemProps) => {
   const parentListItemProps = !hasChildren
     ? {
         component: Link,
-        to: route.path,
+        to: menu.path,
       }
     : {};
 
@@ -44,24 +44,24 @@ const SidebarListItem = ({ route }: SidebarListItemProps) => {
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...parentListItemProps}
       >
-        <ListItemIcon>{route.icon}</ListItemIcon>
-        <ListItemText primary={route.name} />
+        <ListItemIcon>{menu.icon}</ListItemIcon>
+        <ListItemText primary={menu.name} />
         {hasChildren && <Box>{open ? <ExpandLess /> : <ExpandMore />}</Box>}
       </ListItemButton>
       {hasChildren && (
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List disablePadding>
-            {route?.children?.map((childRoute) => (
+            {menu?.children?.map((childMenu) => (
               <ListItemButton
                 sx={{ pl: 9 }}
-                key={childRoute.name}
+                key={childMenu.name}
                 component={Link}
-                to={childRoute.path}
+                to={childMenu.path}
               >
                 <ListItemText
-                  primary={childRoute.name}
+                  primary={childMenu.name}
                   sx={{
-                    color: pathname === childRoute.path ? colors.main : 'inherit',
+                    color: pathname === childMenu.path ? colors.main : 'inherit',
                   }}
                 />
               </ListItemButton>

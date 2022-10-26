@@ -41,5 +41,6 @@ module.exports = {
         ignorePropertyModificationsFor: ['state'],
       },
     ],
+    'react/require-default-props': 'off',
   },
 };
